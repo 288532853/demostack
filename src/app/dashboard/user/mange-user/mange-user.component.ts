@@ -1,21 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-
+import { UserService } from 'src/app/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { User } from 'src/app/models/user';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mange-user',
@@ -23,24 +12,41 @@ const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   styleUrls: ['./mange-user.component.css']
 })
 export class MangeUserComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color','actionsColumn'];
-  dataSource: MatTableDataSource<UserData>;
+  
+userList :any;
+  
+  constructor(private userService: UserService,private _router:Router) {}
+
+  displayedColumns: string[] = ['Id', 'FullName', 'Phone', 'Email','actionsColumn'];
+  dataSource : any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  
-  constructor() {
-// Create 100 users
-const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+ //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
-// Assign the data to the data source for the table to render
-this.dataSource = new MatTableDataSource(users);
 
-   }
+  ngOnInit() {    
+    this.bindUser();
+   
+  }
 
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
+  bindUser()
+  {    
+     this.userService.getUserList().subscribe((response : any)=>{
+     
+      this.dataSource  = response;
+      this.userList  = response
+      this.dataSource = new MatTableDataSource(this.userList);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      console.log(this.userList);
+      
+    },
+    (err : HttpErrorResponse)=>{
+      console.log("usererror in Response");
+    });
+
   }
 
   applyFilter(filterValue: string) {
@@ -50,20 +56,16 @@ this.dataSource = new MatTableDataSource(users);
       this.dataSource.paginator.firstPage();
     }
   }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+  editUser(i,id){
+    this._router.navigate(['/dashboard/adduser/'+ id]);
+    //this._router.navigate(['/dashboard/adduser/'], { queryParams:  id, skipLocationChange: true});
+  }
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
-   
-  };
+  deleteItem(i,id){
+
+  }
+
+ 
 
 }//end class

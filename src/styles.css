@@ -28,11 +28,11 @@ mat-form-field{
 }
 .mat-card-header{
     text-align: center;
-    border-radius: 3px;
-    background-color: darkgray;
+    /* border-radius: 3px;
+    background-color: darkgray; */
     display: block!important;
-    padding: 5px;
-    font-family: Open Sans,sans-serif;
+    /* padding: 5px;
+    font-family: Open Sans,sans-serif; */
 }
 .mat-card-header.mat-card-title{margin: 0px!important;}
 .mat-card-header-text{margin: 0px!important;}
@@ -45,3 +45,14 @@ mat-form-field{
     color: #2d3e50!important;
 }
 .mat-card-header .mat-card-title{margin-bottom:0px!important;}
+mat-form-field {width: 100%;}
+
+.mat-form-field-label-wrapper{font-size:16px!important;font-family: Open Sans,sans-serif!important;}
+.mat-form-field-infix{font-size: 16px!important;}
+.mat-form-field{font-size: 16px!important;font-family: Open Sans,sans-serif!important;}
+
+/* .mat-tool{border-radius: 5px;background: #C6C6CB;height:50px!important;} */
+
+.mat-toolbar-row, .mat-toolbar-single-row{height:50px!important; }
+.mat-toolbar-multiple-rows{min-height: 50px!important;}
+.mat-tool{background:#c6c6c6!important;border-radius: 5px!important;height:40px!important;}

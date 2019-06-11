@@ -1,3 +1,90 @@
-<p>
-  add-update-user works!
-</p>
+
+
+
+
+<div style="width:100%">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="off"  novalidate>
+            <!-- <mat-toolbar class="mat-tool">
+                    <mat-toolbar-row>
+                        
+            
+                    </mat-toolbar-row>            
+                    </mat-toolbar> -->
+<mat-card class="mat-card-Style">
+    
+    <mat-card-title>General Information</mat-card-title>
+  
+<mat-card-content>
+                    <div class="example-container">
+                        <mat-form-field class="example-full-width">
+                            <input matInput type="text" placeholder="First Name" style="text-transform: uppercase" class="form-control" formControlName="firstName" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                              <input matInput type="text" placeholder="Last name" class="form-control" formControlName="lastName" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required  />
+                            </mat-form-field>
+
+
+                            <mat-form-field class="example-full-width">
+                                <input matInput type="text" placeholder="Phone No" class="form-control" formControlName="phoneNo" [ngClass]="{ 'is-invalid': f.submitted && phoneNo.invalid }" required  />
+                                <!-- <mat-error *ngIf="f.phoneNo.errors.required">This field is mandatory.</mat-error> -->
+                                <!-- <mat-error *ngIf="f.phoneNo.errors.minlength">Minimum 8 charactors needed.</mat-error> -->
+                                <mat-error *ngIf="f.phoneNo.errors?.pattern">Enter valid phone no.</mat-error>
+                            </mat-form-field>
+                            
+                            
+                              <mat-form-field class="example-full-width">
+                                  <input matInput type="text" placeholder="Email" formControlName="email"  [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required  />
+                                  <!-- <div *ngIf="f.email.errors.required">Email is required</div> -->
+                                  <mat-error *ngIf="f.email.errors?.email">Email must be a valid email.</mat-error>
+                                </mat-form-field>                           
+                        
+                          <mat-form-field class="example-full-width">
+                              <input matInput type="password" placeholder="Password" class="form-control" formControlName="password"  [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required />
+                              <!-- <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+                              <mat-error *ngIf="hasError('password', 'minlength')">Password must be at least 6 characters</mat-error> -->
+                              <!-- <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error> -->
+                              <!-- <mat-error *ngIf="hasError('password', 'minlength')">Password must be at least 6 characters</mat-error> -->
+                              <mat-error *ngIf="f.password.errors?.minlength">Password must be at least 6 characters.</mat-error>
+                          </mat-form-field>
+                          <!-- <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div> -->
+                      </div>
+               
+    </mat-card-content>
+
+  </mat-card>
+
+<!-- Splt from-->
+  <mat-card class="mat-card-Style">
+    
+      <mat-card-title>Address Information</mat-card-title>
+   
+  <mat-card-content>
+                 
+                      <div class="example-container">
+                          <mat-form-field class="example-full-width">
+                                <input matInput type="text" placeholder="Address" class="form-control" formControlName="address" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required />
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <input matInput type="text" placeholder="City" class="form-control" formControlName="city" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required />
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <input matInput type="text" placeholder="State" class="form-control" formControlName="state" [ngClass]="{ 'is-invalid': f.submitted && state.invalid }" required />
+                            </mat-form-field>       
+                        </div>
+                
+      </mat-card-content>
+       
+      
+    </mat-card>
+    <!-- <button mat-raised-button  color="primary">Save</button> -->
+    <button mat-button class="crm-command-bar-button">
+            <mat-icon>save</mat-icon>
+             SAVE
+            </button>      
+  </form>
+  </div>
+
+
+
+
+

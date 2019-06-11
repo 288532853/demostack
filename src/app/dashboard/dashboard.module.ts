@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddUpdateUserComponent } from './user/add-update-user/add-update-user.component';
 import { UserService } from '../services/user.service';
 import { MangeUserComponent } from './user/mange-user/mange-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LayoutComponent, HomeComponent, AdminComponent, AddUpdateUserComponent, MangeUserComponent],
@@ -21,7 +22,9 @@ import { MangeUserComponent } from './user/mange-user/mange-user.component';
     CommonModule,
     RouterModule.forChild(dashboardRoutes),
     CustomMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthGuard,UserService],
  

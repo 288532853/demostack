@@ -5,8 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth-guard.service';
-import { AddUpdateUserComponent } from './user/add-update-user/add-update-user.component';
+
 import { MangeUserComponent } from './user/mange-user/mange-user.component';
+import { AddUpdateUserComponent } from './user/add-update-user/add-update-user.component';
 
 export const dashboardRoutes: Routes = [
   {
@@ -17,8 +18,9 @@ export const dashboardRoutes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent},
       { path: 'admin', component: AdminComponent},
-      {path: 'addUpdateUser', component:AddUpdateUserComponent},
-      {path: 'ManageUser', component:MangeUserComponent}
+      {path: 'adduser', component: AddUpdateUserComponent},
+      {path: 'adduser/:id', component: AddUpdateUserComponent},
+      {path: 'ManageUser', component: MangeUserComponent}
     ]
   }
 ];
