@@ -25,10 +25,10 @@
 
 
                             <mat-form-field class="example-full-width">
-                                <input matInput type="text" placeholder="Phone No" class="form-control" formControlName="phoneNo" [ngClass]="{ 'is-invalid': f.submitted && phoneNo.invalid }" required  />
+                                <input matInput type="text" placeholder="Phone" class="form-control" formControlName="phone" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required  />
                                 <!-- <mat-error *ngIf="f.phoneNo.errors.required">This field is mandatory.</mat-error> -->
                                 <!-- <mat-error *ngIf="f.phoneNo.errors.minlength">Minimum 8 charactors needed.</mat-error> -->
-                                <mat-error *ngIf="f.phoneNo.errors?.pattern">Enter valid phone no.</mat-error>
+                                <mat-error *ngIf="f.phone.errors?.pattern">Enter valid phone no.</mat-error>
                             </mat-form-field>
                             
                             

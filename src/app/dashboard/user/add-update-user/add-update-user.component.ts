@@ -33,8 +33,7 @@ export class AddUpdateUserComponent implements OnInit {
   }
 
  bindControls(userId)
- {
-  debugger;
+ {  
   this.userService.getUser(userId).subscribe((response : any)=>{
      
     if(response != null)
@@ -51,18 +50,18 @@ export class AddUpdateUserComponent implements OnInit {
  }
 
   createForm(data) {
-    debugger;
     if(data == null)
     {
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phoneNo: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       address: ['', Validators.required],
       city: ['', Validators.required],
-      state: ['', Validators.required]
+      state: ['', Validators.required],
+      Id: ['']
 
     });
   }
@@ -72,11 +71,12 @@ export class AddUpdateUserComponent implements OnInit {
       firstName: [data.FirstName, Validators.required],
       lastName: [data.LastName, Validators.required],
       email: [data.Email, [Validators.required, Validators.email]],
-      phoneNo: [data.Phone, [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
+      phone: [data.Phone, [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
       password: [data.Password, [Validators.required, Validators.minLength(6)]],
       address: [data.Address, Validators.required],
       city: [data.City, Validators.required],
-      state: [data.State, Validators.required]
+      state: [data.State, Validators.required],
+      Id:[data.Id]
 
     });
   }
@@ -100,8 +100,7 @@ export class AddUpdateUserComponent implements OnInit {
       this.bindControls(this.activatedRoute.snapshot.paramMap.get('id'))
     }
     this.userService.addUser(this.userForm.value).subscribe((response : any)=>{
-      debugger;
-      console.log()
+     // console.log()
      if(response.status == '200')
      {
       alert(response.message);
