@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
   //   submitted = true;
   model: any = {};
   isLoginError : boolean = false;
+  errorMessage : string = '';
   
 
   constructor(private userService: UserService,private router: Router,
@@ -57,20 +58,26 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
+    
     var email = this.model.email;
     var password = this.model.password;
    // this._authService.login(this.model.email,this.model.password);
 
-    this.userService.login(this.model.email,this.model.password).subscribe((data : any)=>{
-      //debugger;
-      if(data != '')
+    this.userService.login(this.model.email, this.model.password).subscribe((response : any)=>{
+      debugger;
+      if(response =='420')
+      {
+       // alert("Invalid Credential");
+        this.errorMessage = "Invalid Credential";
+      }
+      else  if(response != '')
       {
       //localStorage.setItem('userToken',this.model.email);
-      localStorage.setItem('token', data);
+      localStorage.setItem('token', response.Tokan);
       this.router.navigateByUrl('/dashboard');  
       }
-      else if(data == '')
+      
+      else if(response == '')
       {
         alert("API Server Not Found");
       }

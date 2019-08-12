@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private notificationService: NotificationService) { 
+
+    this.notificationService.success(':: Page load successfully');
+  }
 
   ngOnInit() {
   }

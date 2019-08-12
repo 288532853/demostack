@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\dashboard",
+    "\\src\\app\\dashboard\\admin",
+    "\\src\\app\\dashboard\\user",
+    "\\src\\app\\dashboard\\user\\mange-user"
+  ],
+  "SelectedNode": "\\src\\app\\dashboard\\user\\mange-user\\mange-user.component.html",
+  "PreviewInSolutionExplorer": false
+}

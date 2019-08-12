@@ -1,0 +1,75 @@
+
+
+
+
+<div style="width:100%">
+    <form [formGroup]="taxCodeForm" (ngSubmit)="onSubmit()" autocomplete="off"  novalidate>
+            <!-- <mat-toolbar class="mat-tool">
+                    <mat-toolbar-row>
+                    </mat-toolbar-row>            
+                    </mat-toolbar> -->
+<mat-card class="mat-card-Style">
+    
+    <mat-card-title>General Information</mat-card-title>
+  
+<mat-card-content>
+                    <div class="example-container">
+                        <mat-form-field class="example-full-width">
+                            <input matInput type="text" placeholder="Tax CodeName" style="text-transform: uppercase" class="form-control" formControlName="taxCodeName" [ngClass]="{ 'is-invalid': f.submitted && taxCodeName.invalid }" required />
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                              <input matInput type="text" placeholder="Description" class="form-control" formControlName="description" [ngClass]="{ 'is-invalid': f.submitted && description.invalid }" required  />
+                            </mat-form-field>                          
+                           
+                            <!-- <mat-form-field class="example-full-width">
+                              <input matInput type="text" placeholder="Tax Type" style="text-transform: uppercase" class="form-control" formControlName="taxType" [ngClass]="{ 'is-invalid': f.submitted && taxType.invalid }" required />
+                            </mat-form-field>                            -->
+
+                            <mat-form-field>
+                              <mat-select placeholder="Please select taxType" formControlName="taxType"  [ngClass]="{ 'is-invalid': f.submitted && taxType.invalid }" required>
+                                  <!-- <mat-option #allSelected [value]="0">Please select TaxType</mat-option> -->
+                                  <mat-option *ngFor="let taxtype of taxtypeList" [value]="taxtype.id">
+                                    {{taxtype.taxType}}
+                                  </mat-option>
+                                  
+                              </mat-select>
+                        </mat-form-field>
+                            
+                              <mat-form-field class="example-full-width">
+                                  <input matInput type="text" placeholder="Rate" formControlName="rate"  [ngClass]="{ 'is-invalid': f.submitted && rate.invalid }" required  />
+                                  <!-- <div *ngIf="f.email.errors.required">Email is required</div> -->
+                                </mat-form-field>      
+                                
+                                
+                                  <!-- <select>
+                                    <option value="0">--All--</option>
+                                    <option *ngFor="let taxtype of taxtypeList" value={{taxtype.id}}>
+                                        {{taxtype.taxType}}
+                                    </option>
+                                </select> -->
+                        
+                          
+
+                                <mat-checkbox  formControlName="isActive" checked="true">Active</mat-checkbox>                      
+                      </div>               
+    </mat-card-content>
+
+  </mat-card>      
+
+    <!-- <button mat-raised-button  color="primary">Save</button> -->
+    <button mat-button class="crm-command-bar-button">
+            <mat-icon>save</mat-icon>
+             Save
+            </button>      
+
+            <button mat-button class="crm-command-bar-button" (click)="onBack()">
+              <mat-icon>arrow_back</mat-icon>
+              Back
+              </button> 
+  </form>
+  </div>
+
+
+
+
+

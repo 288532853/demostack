@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-add-update-user',
@@ -17,8 +18,8 @@ export class AddUpdateUserComponent implements OnInit {
   id:any;
 
 
-  constructor(private userService: UserService, private router: Router,
-    private formBuilder: FormBuilder,private activatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService, private router: Router,private notificationService: NotificationService,
+    private formBuilder: FormBuilder,private activatedRoute: ActivatedRoute,private _router:Router) {
      
      }
 
@@ -41,7 +42,7 @@ export class AddUpdateUserComponent implements OnInit {
       this.createForm(response);
     }
   
-    console.log(response);
+    //console.log(response);
     
   },
   (err : HttpErrorResponse)=>{
@@ -103,11 +104,20 @@ export class AddUpdateUserComponent implements OnInit {
      // console.log()
      if(response.status == '200')
      {
-      alert(response.message);
-     }
-      alert(response);
+      //alert(response.message);
+      if(this.activatedRoute.snapshot.paramMap.get('id') != null)
+    {
+      this.notificationService.success(response.message);
+      this._router.navigate(['/dashboard/ManageUser/']);
+    }
+    else{
+      this.notificationService.success(response.message);
       this.submitted = false;
       this.userForm.reset();
+    }
+  }
+     // alert(response);
+      
       
 
     },
@@ -115,10 +125,17 @@ export class AddUpdateUserComponent implements OnInit {
       console.log("usererror in Response");
     });
   }
+
+
   public onSaveAndClose() {
 
     //this.logger.info('ContactPage: onSaveAndClose()');
 
     //this.router.navigate(['sales/contacts']);
   }
+
+onBack()
+{
+  this._router.navigate(['/dashboard/ManageUser/']);
 }
+}//end class

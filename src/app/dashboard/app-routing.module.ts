@@ -6,8 +6,10 @@ import { AdminComponent } from './admin/admin.component';
 import { Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth-guard.service';
 
-import { MangeUserComponent } from './user/mange-user/mange-user.component';
+import { ManageUserComponent } from './user/manage-user/manage-user.component';
 import { AddUpdateUserComponent } from './user/add-update-user/add-update-user.component';
+import { ManageTaxcodeComponent } from './taxcode/manage-taxcode/manage-taxcode.component';
+import { AddUpdateTaxcodeComponent } from './taxcode/add-update-taxcode/add-update-taxcode.component';
 
 export const dashboardRoutes: Routes = [
   {
@@ -20,7 +22,10 @@ export const dashboardRoutes: Routes = [
       { path: 'admin', component: AdminComponent},
       {path: 'adduser', component: AddUpdateUserComponent},
       {path: 'adduser/:id', component: AddUpdateUserComponent},
-      {path: 'ManageUser', component: MangeUserComponent}
+      {path: 'ManageUser', component: ManageUserComponent},
+      {path: 'ManageTaxcode', component: ManageTaxcodeComponent},
+      {path: 'addUpdateTaxCode', component:AddUpdateTaxcodeComponent},
+     // {path: 'addUpdateTaxCode/:id', component:AddUpdateTaxcodeComponent}
     ]
   }
 ];

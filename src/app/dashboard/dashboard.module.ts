@@ -13,18 +13,21 @@ import { CustomMaterialModule } from '../Core/custom-material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { AddUpdateUserComponent } from './user/add-update-user/add-update-user.component';
 import { UserService } from '../services/user.service';
-import { MangeUserComponent } from './user/mange-user/mange-user.component';
+import { ManageUserComponent } from './user/manage-user/manage-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AddUpdateTaxcodeComponent } from './taxcode/add-update-taxcode/add-update-taxcode.component';
+import { ManageTaxcodeComponent } from './taxcode/manage-taxcode/manage-taxcode.component';
 @NgModule({
-  declarations: [LayoutComponent, HomeComponent, AdminComponent, AddUpdateUserComponent, MangeUserComponent],
+  declarations: [LayoutComponent, HomeComponent, AdminComponent, AddUpdateUserComponent, ManageUserComponent,AddUpdateTaxcodeComponent, ManageTaxcodeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardRoutes),
     CustomMaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [AuthGuard,UserService],
  

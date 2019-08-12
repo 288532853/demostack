@@ -7,10 +7,12 @@
 <mat-card class="my-card">
     
     <mat-card-title>Login</mat-card-title>
- 
+     
+    <span style="color: red;font-weight: 500;font-size: 17px;" >{{errorMessage}}</span>
 <mat-card-content>
                 <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
-                    <mat-form-field class="example-full-width"> 
+                
+                 <mat-form-field class="example-full-width"> 
                        
                         <input matInput type="text" placeholder="Email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
                         <!-- <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">

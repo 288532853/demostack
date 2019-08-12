@@ -13,26 +13,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './Core/custom-material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { DemoPageComponent } from './demo-page/demo-page.component';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PageNotFoundComponent,
-    DemoPageComponent
+    DemoPageComponent,
+    MatConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
     //AppRoutingModule,
     RouterModule.forRoot(APP_ROUTES),
-    DashboardModule,
+    DashboardModule,    
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[MatConfirmDialogComponent]
 })
 export class AppModule { }

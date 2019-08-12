@@ -30,4 +30,11 @@ getUser(userId) {
   return this.http.get(environment.apiURL+'/User/GetUserById',{params:{userId:userId}});
 }
 
+deleteUser(id) {
+  console.log('deleted Id',id);
+  return this.http.delete(environment.apiURL+'/User/DeleteUser/',{params:{id:id}});
+  // return this.http.delete(environment.apiURL+'/User/DeleteUser?id='+ id);
+}
+
+
 }//end class
