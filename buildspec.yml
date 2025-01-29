@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 11
+      nodejs: 14
     commands:
       - echo "installing dependencies..."
       - npm install -g @angular/cli@7.3.9
