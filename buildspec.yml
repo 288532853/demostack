@@ -5,7 +5,7 @@ phases:
       nodejs: 14
     commands:
       - echo "installing dependencies..."
-      - npm install -g @angular/cli@7.3.9
+      - npm install -g @angular/cli@13.0.0
     build:
       commands:
         - echo "building angular project...."
