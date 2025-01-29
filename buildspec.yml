@@ -1,0 +1,17 @@
+version: 1.0
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - echo "installing dependencies..."
+      - npm install
+      - npm install -g @angular/cli@13.2.0
+    build:
+      commands:
+        - echo "building angular project..."
+        - ng build --prod
+    post-build:
+      commands:
+        - echo "updating files in s3 bucket..."
+        - aws s3 sync dist/my-local-angular-project/ s3://my-s3-bucket-name --delete
